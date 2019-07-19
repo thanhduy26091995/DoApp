@@ -5,10 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.duybui.basemvvmkotlin.data.model.User
 import com.duybui.basemvvmkotlin.data.network.ApiInterface
 import com.duybui.basemvvmkotlin.ui.base.BaseViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class UserViewModel(application: Application) : BaseViewModel(application) {
@@ -31,6 +28,15 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
                 }
             } catch (e: Exception) {
                 println(e.toString())
+            }
+        }
+    }
+
+    fun getRandomUserUsingAsync() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val userResponse = async(Dispatchers.IO) { apiInterface.getRandomUser(10) }
+            withContext(Dispatchers.Main){
+                userList.value = userResponse.await().data
             }
         }
     }

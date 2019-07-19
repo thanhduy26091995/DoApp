@@ -29,7 +29,8 @@ class MainActivity : BaseActivity() {
         presentationComponent.inject(this)
 
         setupRecyclerView()
-        userViewModel.getRandomUser(10)
+        //userViewModel.getRandomUser(10)
+        userViewModel.getRandomUserUsingAsync()
 
         userViewModel.userList.observe(this, Observer { value ->
             userAdapter.setData(value)
