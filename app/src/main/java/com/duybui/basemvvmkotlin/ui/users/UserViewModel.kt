@@ -22,9 +22,10 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
     fun getRandomUser(number: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                val userResponse = apiInterface.getRandomUser(number)
+                var userResponse = apiInterface.getRandomUser(number)
                 withContext(Dispatchers.Main) {
-                    userList.value = userResponse.data
+                    userResponse = filterResponse(userResponse)
+                    userList.value = userResponse?.data
                 }
             } catch (e: Exception) {
                 println(e.toString())
@@ -32,10 +33,11 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
+
     fun getRandomUserUsingAsync() {
         CoroutineScope(Dispatchers.IO).launch {
             val userResponse = async(Dispatchers.IO) { apiInterface.getRandomUser(10) }
-            withContext(Dispatchers.Main){
+            withContext(Dispatchers.Main) {
                 userList.value = userResponse.await().data
             }
         }

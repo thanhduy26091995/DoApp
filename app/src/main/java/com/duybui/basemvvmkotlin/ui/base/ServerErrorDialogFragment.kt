@@ -34,7 +34,7 @@ class ServerErrorDialogFragment : DialogFragment() {
 
     companion object {
 
-        fun newInstance(title: String, body: String): ServerErrorDialogFragment {
+        fun newInstance(title: String?, body: String?): ServerErrorDialogFragment {
             val bundle = Bundle()
             bundle.putString(AppConstants.TITLE, title)
             bundle.putString(AppConstants.BODY, body)

@@ -5,6 +5,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.duybui.basemvvmkotlin.ui.base.BaseActivity
+import com.duybui.basemvvmkotlin.ui.base.DialogsManager
+import com.duybui.basemvvmkotlin.ui.base.ServerErrorDialogFragment
 import com.duybui.basemvvmkotlin.ui.base.ViewModelFactory
 import com.duybui.basemvvmkotlin.ui.users.UserAdapter
 import com.duybui.basemvvmkotlin.ui.users.UserViewModel
@@ -29,12 +31,19 @@ class MainActivity : BaseActivity() {
         presentationComponent.inject(this)
 
         setupRecyclerView()
-        //userViewModel.getRandomUser(10)
-        userViewModel.getRandomUserUsingAsync()
+        userViewModel.getRandomUser(10)
+        // userViewModel.getRandomUserUsingAsync()
 
         userViewModel.userList.observe(this, Observer { value ->
             userAdapter.setData(value)
             userAdapter.notifyDataSetChanged()
+        })
+
+        //listen error
+        userViewModel.error.observe(this, Observer { error ->
+            error?.let {
+                ServerErrorDialogFragment.newInstance(null, error).show(supportFragmentManager, "A")
+            }
         })
     }
 
