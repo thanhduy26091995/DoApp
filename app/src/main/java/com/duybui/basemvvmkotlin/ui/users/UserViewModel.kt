@@ -9,7 +9,10 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class UserViewModel(application: Application) : BaseViewModel(application) {
-    val userList = MutableLiveData<List<User>>()
+    private val _userList = MutableLiveData<List<User>>()
+
+    val users: MutableLiveData<List<User>>
+        get() = _userList
 
     @Inject
     lateinit var apiInterface: ApiInterface
@@ -24,8 +27,9 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
             try {
                 var userResponse = apiInterface.getRandomUser(number)
                 withContext(Dispatchers.Main) {
+                    delay(5000)
                     userResponse = filterResponse(userResponse)
-                    userList.value = userResponse?.data
+                    _userList.value = userResponse?.data.filter { user -> user.gender.equals("male") }
                 }
             } catch (e: Exception) {
                 println(e.toString())
@@ -33,13 +37,16 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
         }
     }
 
-
     fun getRandomUserUsingAsync() {
         CoroutineScope(Dispatchers.IO).launch {
             val userResponse = async(Dispatchers.IO) { apiInterface.getRandomUser(10) }
             withContext(Dispatchers.Main) {
-                userList.value = userResponse.await().data
+                _userList.value = userResponse.await().data
             }
         }
+    }
+
+    override fun onCleared() {
+        super.onCleared()
     }
 }

@@ -6,9 +6,14 @@ data class User(
     @SerializedName("email")
     val email: String,
     @SerializedName("phone")
-    val phone: String,
+    var phone: String,
     @SerializedName("gender")
     val gender: String,
     @SerializedName("picture")
     val picture: Picture
 )
+
+val User.formattedName: String
+    get() {
+        return "$phone '-' $gender"
+    }

@@ -34,7 +34,7 @@ class MainActivity : BaseActivity() {
         userViewModel.getRandomUser(10)
         // userViewModel.getRandomUserUsingAsync()
 
-        userViewModel.userList.observe(this, Observer { value ->
+        userViewModel.users.observe(this, Observer { value ->
             userAdapter.setData(value)
             userAdapter.notifyDataSetChanged()
         })
