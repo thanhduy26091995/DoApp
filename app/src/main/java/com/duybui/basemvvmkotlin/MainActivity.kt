@@ -1,6 +1,7 @@
 package com.duybui.basemvvmkotlin
 
 import android.os.Bundle
+import android.util.TimingLogger
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager

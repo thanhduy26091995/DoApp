@@ -1,7 +1,11 @@
 package com.duybui.basemvvmkotlin.data.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+
+@Parcelize
 data class User(
     @SerializedName("email")
     val email: String,
@@ -11,9 +15,4 @@ data class User(
     val gender: String,
     @SerializedName("picture")
     val picture: Picture
-)
-
-val User.formattedName: String
-    get() {
-        return "$phone '-' $gender"
-    }
+): Parcelable

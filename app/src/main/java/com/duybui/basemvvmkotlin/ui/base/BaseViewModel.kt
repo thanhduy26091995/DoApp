@@ -12,8 +12,8 @@ import com.duybui.basemvvmkotlin.di.presentation.PresentationComponent
 import com.duybui.basemvvmkotlin.di.presentation.PresentationModule
 
 abstract class BaseViewModel(application: Application) : AndroidViewModel(application) {
-    var _error = MutableLiveData<String>()
-        protected set
+    private var _error = MutableLiveData<String>()
+        private set
     private var mIsInjectorUsed: Boolean = false
 
 

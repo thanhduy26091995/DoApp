@@ -1,6 +1,7 @@
 package com.duybui.basemvvmkotlin.ui.users
 
 import android.app.Application
+import android.util.TimingLogger
 import androidx.lifecycle.MutableLiveData
 import com.duybui.basemvvmkotlin.data.model.User
 import com.duybui.basemvvmkotlin.data.network.ApiInterface
@@ -26,10 +27,22 @@ class UserViewModel(application: Application) : BaseViewModel(application) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 var userResponse = apiInterface.getRandomUser(number)
+
                 withContext(Dispatchers.Main) {
                     delay(5000)
                     userResponse = filterResponse(userResponse)
-                    _userList.value = userResponse?.data.filter { user -> user.gender.equals("male") }
+                    _userList.value = userResponse?.data
+                    val timingLogger = TimingLogger("TimingLogger", "")
+
+                    var numberCount = 0L
+                    for (x in 0..10_000_000) {
+                        numberCount += x
+                    }
+                    timingLogger.addSplit("(1)")
+
+                    timingLogger.addSplit("(2)")
+                    timingLogger.dumpToLog()
+                    //_userList.value = userResponse?.data.filter { user -> user.gender.equals("male") }
                 }
             } catch (e: Exception) {
                 println(e.toString())
