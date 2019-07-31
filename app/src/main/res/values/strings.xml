@@ -5,4 +5,10 @@
     <string name="dont_have_account_sign_up">DON’T HAVE AN ACCOUNT? SIGN UP</string>
     <string name="sign_in">Sign In</string>
     <string name="enter_name">Enter name</string>
+    <string name="password">PASSWORD</string>
+    <string name="enter_password">Enter password</string>
+    <string name="help">Help</string>
+    <string name="name">NAME</string>
+    <string name="already_have_an_account">ALREADY HAVE AN ACCOUNT SIGN IN</string>
+    <string name="sign_up">Sign up</string>
 </resources>

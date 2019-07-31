@@ -3,18 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorBlack"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/bg"
     android:orientation="vertical">
-
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/bg"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineTop"
@@ -24,7 +15,7 @@
         app:layout_constraintGuide_percent="0.35" />
 
     <View
-        android:id="@+id/view_circle"
+        android:id="@+id/viewCircle"
         android:layout_width="@dimen/_120sdp"
         android:layout_height="@dimen/_120sdp"
         android:alpha="0.1"
@@ -41,14 +32,15 @@
         app:layout_constraintBottom_toBottomOf="@id/guidelineTop"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/view_circle" />
+        app:layout_constraintTop_toTopOf="@id/viewCircle" />
 
 
     <TextView
-        android:id="@+id/tv_dont_have_account"
+        android:id="@+id/tvSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/_30sdp"
+        android:padding="@dimen/_5sdp"
         android:text="@string/dont_have_account_sign_up"
         android:textAppearance="@style/TextAppearance.AvenirBook"
         android:textColor="@color/colorWhite"
@@ -58,7 +50,7 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <TextView
-        android:id="@+id/tv_sign_in"
+        android:id="@+id/tvSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_30sdp"
@@ -72,48 +64,48 @@
         android:textAppearance="@style/TextAppearance.AvenirBook"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toTopOf="@+id/tv_dont_have_account"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignUp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <View
-        android:id="@+id/view_line_1"
+        android:id="@+id/viewLine1"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="@dimen/_40sdp"
         android:alpha="0.1"
         android:background="@drawable/background_view_gradient"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sign_in"
+        app:layout_constraintBottom_toTopOf="@+id/tvSignIn"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_password"
+        android:id="@+id/ivPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_30sdp"
         android:src="@drawable/ic_password"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_password" />
+        app:layout_constraintTop_toTopOf="@id/tvPassword" />
 
     <TextView
-        android:id="@+id/tv_password"
+        android:id="@+id/tvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PASSWORD"
+        android:text="@string/password"
         android:textAppearance="@style/TextAppearance.AvenirBook"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@id/et_password"
-        app:layout_constraintLeft_toLeftOf="@id/et_password" />
+        app:layout_constraintBottom_toTopOf="@id/etPassword"
+        app:layout_constraintLeft_toLeftOf="@id/etPassword" />
 
     <EditText
-        android:id="@+id/et_password"
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_25sdp"
         android:background="@android:color/transparent"
-        android:hint="Enter password"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
         android:paddingTop="@dimen/_5sdp"
         android:paddingBottom="@dimen/_5sdp"
@@ -121,56 +113,56 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhiteOpacity50"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toBottomOf="@id/tv_help"
-        app:layout_constraintLeft_toRightOf="@id/iv_password"
-        app:layout_constraintRight_toLeftOf="@id/tv_help" />
+        app:layout_constraintBottom_toBottomOf="@id/tvHelp"
+        app:layout_constraintLeft_toRightOf="@id/ivPassword"
+        app:layout_constraintRight_toLeftOf="@id/tvHelp" />
 
     <TextView
-        android:id="@+id/tv_help"
+        android:id="@+id/tvHelp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/_30sdp"
         android:layout_marginBottom="@dimen/_15sdp"
-        android:text="Help"
+        android:text="@string/help"
         android:textAppearance="@style/TextAppearance.AvenirBook"
         android:textColor="@color/colorWhiteOpacity50"
         android:textSize="@dimen/_11sdp"
-        app:layout_constraintBottom_toTopOf="@id/view_line_1"
+        app:layout_constraintBottom_toTopOf="@id/viewLine1"
         app:layout_constraintRight_toRightOf="parent" />
 
     <View
-        android:id="@+id/view_line_2"
+        android:id="@+id/viewLine2"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginBottom="@dimen/_15sdp"
         android:alpha="0.1"
         android:background="@drawable/background_view_gradient"
-        app:layout_constraintBottom_toTopOf="@+id/tv_password"
+        app:layout_constraintBottom_toTopOf="@+id/tvPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
-        android:id="@+id/iv_name"
+        android:id="@+id/ivName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_30sdp"
         android:src="@drawable/ic_name"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_name" />
+        app:layout_constraintTop_toTopOf="@id/tvName" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="NAME"
+        android:text="@string/name"
         android:textAppearance="@style/TextAppearance.AvenirBook"
         android:textColor="@color/colorWhite"
         android:textSize="@dimen/_10sdp"
-        app:layout_constraintBottom_toTopOf="@id/et_name"
-        app:layout_constraintLeft_toLeftOf="@id/et_name" />
+        app:layout_constraintBottom_toTopOf="@id/etName"
+        app:layout_constraintLeft_toLeftOf="@id/etName" />
 
     <EditText
-        android:id="@+id/et_name"
+        android:id="@+id/etName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_25sdp"
@@ -184,7 +176,7 @@
         android:textColor="@color/colorWhite"
         android:textColorHint="@color/colorWhiteOpacity50"
         android:textSize="@dimen/_14sdp"
-        app:layout_constraintBottom_toTopOf="@id/view_line_2"
-        app:layout_constraintLeft_toRightOf="@id/iv_name"
+        app:layout_constraintBottom_toTopOf="@id/viewLine2"
+        app:layout_constraintLeft_toRightOf="@id/ivName"
         app:layout_constraintRight_toRightOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,10 @@
 package com.duybui.doapp.ui.base
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.annotation.UiThread
@@ -26,7 +28,7 @@ abstract class BaseActivity : AppCompatActivity() {
             }
             mIsInjectorUsed = true
             return applicationComponent
-                .newPresentationComponent(PresentationModule(this))
+                    .newPresentationComponent(PresentationModule(this))
 
         }
 
@@ -39,6 +41,7 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes)
+        setFullScreenView()
     }
 
 
@@ -50,10 +53,22 @@ abstract class BaseActivity : AppCompatActivity() {
         super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase))
     }
 
-    protected fun setFullScreenView(){
+    protected fun setFullScreenView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val w = window
-            w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            w.run{
+                addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+                clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+                setStatusBarColor(Color.TRANSPARENT)
+            }
+           // w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
