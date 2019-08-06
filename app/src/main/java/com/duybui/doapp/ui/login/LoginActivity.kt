@@ -9,6 +9,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
+import com.duybui.doapp.ui.home.MainActivity
 import com.duybui.doapp.ui.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -18,6 +19,10 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             R.id.tvSignUp -> {
                 val signUpIntent = Intent(this, SignUpActivity::class.java)
                 startActivity(signUpIntent)
+            }
+            R.id.tvSignIn -> {
+                val signInIntent = Intent(this, MainActivity::class.java)
+                startActivity(signInIntent)
             }
         }
     }
@@ -30,6 +35,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
         setupSpan()
         setFullScreenView()
         tvSignUp.setOnClickListener(this)
+        tvSignIn.setOnClickListener(this)
     }
 
     private fun setupSpan() {

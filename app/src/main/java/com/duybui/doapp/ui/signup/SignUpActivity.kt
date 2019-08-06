@@ -1,5 +1,6 @@
 package com.duybui.doapp.ui.signup
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
@@ -8,7 +9,8 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import kotlinx.android.synthetic.main.activity_login.tvSignIn
+import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.android.synthetic.main.include_toolbar.*
 
 class SignUpActivity : BaseActivity(), View.OnClickListener {
@@ -16,6 +18,10 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         when (p0?.id){
             R.id.tvSignIn -> {
                 finish()
+            }
+            R.id.tvContinue -> {
+                val intent = Intent(this, IntroductionActivity::class.java)
+                startActivity(intent)
             }
         }
     }
@@ -28,6 +34,7 @@ class SignUpActivity : BaseActivity(), View.OnClickListener {
         setupSpan()
         setupToolbar()
         tvSignIn.setOnClickListener(this)
+        tvContinue.setOnClickListener(this)
     }
 
     private fun setupSpan() {
