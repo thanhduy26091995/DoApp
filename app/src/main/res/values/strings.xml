@@ -31,4 +31,6 @@
     <string name="menu_lists">Lists</string>
     <string name="menu_profile">Profile</string>
     <string name="menu_timeline">Timeline</string>
+    <string name="menu_setting">Settings</string>
+    <string name="menu_logout">Logout</string>
 </resources>
