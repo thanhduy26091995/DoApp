@@ -1,4 +1,4 @@
-package com.duybui.doapp.ui.home
+package com.duybui.doapp.ui
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,36 +7,37 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.duybui.doapp.ui.home.HomeFragment
+import com.duybui.doapp.utils.AppConstants
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
     override val layoutRes: Int
         get() = R.layout.activity_main
 
 
+    private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
-        }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val toggle = ActionBarDrawerToggle(
-                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+        toggle = ActionBarDrawerToggle(
+                this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
         drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+        //init home fragment
+        initFragment(HomeFragment(), AppConstants.FRAGMENT_TAG.HOME_FRAGMENT)
+        setupToolbar(AppConstants.FRAGMENT_TAG.HOME_FRAGMENT)
     }
 
     override fun onBackPressed() {
@@ -50,7 +51,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
         return true
     }
 
@@ -58,21 +58,41 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        return when (item.itemId) {
-            R.id.action_settings -> true
-            else -> super.onOptionsItemSelected(item)
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        } else if (!toggle.isDrawerIndicatorEnabled) {
+            finish()
+            return false
         }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
+        var fragment: Fragment? = null
+        var tag: String = AppConstants.FRAGMENT_TAG.HOME_FRAGMENT
         when (item.itemId) {
             R.id.nav_home -> {
                 // Handle the camera action
+                fragment = HomeFragment()
+                tag = AppConstants.FRAGMENT_TAG.HOME_FRAGMENT
             }
+
         }
+        //set new fragment
+        fragment?.let {
+            initFragment(it, tag)
+            setupToolbar(tag)
+        }
+
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    private fun initFragment(fragment: Fragment, fragmentTag: String) {
+        val fragmentManager = supportFragmentManager
+        fragmentManager.beginTransaction()
+                .replace(R.id.frame_container, fragment, fragmentTag).commitAllowingStateLoss()
     }
 }

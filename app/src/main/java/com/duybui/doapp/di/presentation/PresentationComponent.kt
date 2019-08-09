@@ -1,6 +1,6 @@
 package com.duybui.doapp.di.presentation
 
-import com.duybui.doapp.ui.home.MainActivity
+import com.duybui.doapp.ui.MainActivity
 import com.duybui.doapp.ui.users.UserViewModel
 import dagger.Subcomponent
 

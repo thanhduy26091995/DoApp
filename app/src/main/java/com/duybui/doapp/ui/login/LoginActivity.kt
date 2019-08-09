@@ -9,7 +9,7 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
-import com.duybui.doapp.ui.home.MainActivity
+import com.duybui.doapp.ui.MainActivity
 import com.duybui.doapp.ui.signup.SignUpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 

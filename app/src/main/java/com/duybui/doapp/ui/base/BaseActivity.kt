@@ -4,15 +4,21 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.view.View
 import android.view.WindowManager
+import android.widget.RelativeLayout
 import androidx.annotation.LayoutRes
 import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import com.duybui.doapp.MyApplication
+import com.duybui.doapp.R
 import com.duybui.doapp.di.application.ApplicationComponent
 import com.duybui.doapp.di.presentation.PresentationComponent
 import com.duybui.doapp.di.presentation.PresentationModule
+import com.duybui.doapp.utils.AppConstants
+import kotlinx.android.synthetic.main.app_bar_main.*
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper
 
 
@@ -56,12 +62,12 @@ abstract class BaseActivity : AppCompatActivity() {
     protected fun setFullScreenView() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             val w = window
-            w.run{
+            w.run {
                 addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
                 clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
                 setStatusBarColor(Color.TRANSPARENT)
             }
-           // w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
+            // w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS)
         }
     }
 
@@ -70,5 +76,27 @@ abstract class BaseActivity : AppCompatActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    protected fun setupToolbar(tag: String) {
+        val toolbarView = LayoutInflater.from(this).inflate(R.layout.custom_appbar, toolbar, false)
+        val toolbarHome = toolbarView.findViewById(R.id.toolbar_home) as RelativeLayout
+        val toolbarCalendar = toolbarView.findViewById(R.id.toolbar_calendar) as RelativeLayout
+        val toolbarRemain = toolbarView.findViewById(R.id.toolbar_remain) as RelativeLayout
+        toolbar.addView(toolbarView)
+        setSupportActionBar(toolbar)
+        supportActionBar?.run {
+            setDisplayHomeAsUpEnabled(true)
+            setHomeButtonEnabled(true)
+            title = ""
+        }
+
+        when (tag){
+            AppConstants.FRAGMENT_TAG.HOME_FRAGMENT -> {
+                toolbarHome.visibility = View.VISIBLE
+                toolbarCalendar.visibility = View.GONE
+                toolbarRemain.visibility = View.GONE
+            }
+        }
     }
 }

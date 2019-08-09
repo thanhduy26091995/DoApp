@@ -12,7 +12,7 @@ import android.widget.TextView
 import com.duybui.doapp.R
 import com.duybui.doapp.data.model.Introduction
 import com.duybui.doapp.ui.base.BaseActivity
-import com.duybui.doapp.ui.home.MainActivity
+import com.duybui.doapp.ui.MainActivity
 import com.lorentzos.flingswipe.SwipeFlingAdapterView
 import kotlinx.android.synthetic.main.activity_introduction_view.*
 import kotlinx.android.synthetic.main.include_toolbar.*
