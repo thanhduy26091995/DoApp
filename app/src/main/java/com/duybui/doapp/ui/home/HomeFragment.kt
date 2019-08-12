@@ -4,11 +4,43 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseFragment
+import com.duybui.doapp.ui.base.ViewModelFactory
+import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
-class HomeFragment : BaseFragment(){
+class HomeFragment : BaseFragment() {
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    @Inject
+    lateinit var homeAdapter: HomeAdapter
+
+    private val homeViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel::class.java)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presentationComponent.inject(this)
+        setupRecyclerView()
+
+        homeViewModel.events.observe(this, Observer { value ->
+            homeAdapter.setEventList(value)
+        })
+    }
+
+    private fun setupRecyclerView() {
+        rvEvents.layoutManager = LinearLayoutManager(activity)
+        rvEvents.adapter = homeAdapter
     }
 }

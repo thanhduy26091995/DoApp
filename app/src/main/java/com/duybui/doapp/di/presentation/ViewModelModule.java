@@ -3,6 +3,7 @@ package com.duybui.doapp.di.presentation;
 import android.app.Application;
 import androidx.lifecycle.ViewModel;
 import com.duybui.doapp.ui.base.ViewModelFactory;
+import com.duybui.doapp.ui.home.HomeViewModel;
 import com.duybui.doapp.ui.users.UserViewModel;
 import dagger.MapKey;
 import dagger.Module;
@@ -36,5 +37,12 @@ public class ViewModelModule {
     @ViewModelKey(UserViewModel.class)
     ViewModel userViewModel(Application application) {
         return new UserViewModel(application);
+    }
+
+    @Provides
+    @IntoMap
+    @ViewModelKey(HomeViewModel.class)
+    ViewModel homeViewModel(Application application) {
+        return new HomeViewModel(application);
     }
 }

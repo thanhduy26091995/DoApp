@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 
 import com.duybui.doapp.ui.base.DialogsManager
+import com.duybui.doapp.ui.home.HomeAdapter
 import com.duybui.doapp.ui.users.UserAdapter
 import dagger.Module
 import dagger.Provides
@@ -47,6 +48,11 @@ class PresentationModule {
     @Provides
     internal fun userAdapter(activity: Activity): UserAdapter {
         return UserAdapter(activity)
+    }
+
+    @Provides
+    internal fun homeAdapter(activity: Activity): HomeAdapter {
+        return HomeAdapter(activity)
     }
 
 }
