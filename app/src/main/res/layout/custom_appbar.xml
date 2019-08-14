@@ -32,10 +32,10 @@
             android:layout_centerInParent="true"
             android:layout_marginRight="@dimen/_15sdp"
             android:layout_toLeftOf="@id/ivWeather"
+            android:text="67&#xb0;"
             android:textAppearance="@style/TextAppearance.AvenirBook"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_16sdp"
-            android:text="67&#xb0;" />
+            android:textSize="@dimen/_16sdp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -43,45 +43,47 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?android:attr/actionBarSize"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivRight"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
             android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_right" />
+            android:background="?attr/actionBarItemBackground"
+            android:src="@drawable/ic_arrow_right_36dp" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/ivLeft"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/_36sdp"
+            android:layout_height="@dimen/_36sdp"
             android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_toLeftOf="@id/ivRight"
-            android:src="@drawable/ic_left" />
+            android:background="?attr/actionBarItemBackground"
+            android:src="@drawable/ic_arrow_left_36dp" />
 
         <TextView
             android:id="@+id/tvDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
             android:layout_centerInParent="true"
+            android:text="March 2019"
             android:textAppearance="@style/TextAppearance.AvenirBook"
             android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_16sdp"
-            tools:text="March 2019" />
+            android:textSize="@dimen/_16sdp" />
     </RelativeLayout>
 
     <RelativeLayout
-        android:visibility="gone"
         android:id="@+id/toolbar_remain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:minHeight="?android:attr/actionBarSize"
+        android:visibility="gone"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent">

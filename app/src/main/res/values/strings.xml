@@ -34,6 +34,9 @@
     <string name="menu_setting">Settings</string>
     <string name="menu_logout">Logout</string>
 
+    <string name="calendar_behavior" translatable="false">com.duybui.doapp.utils.CalendarBehavior</string>
+    <string name="calendar_scrolling_behavior" translatable="false">com.duybui.doapp.utils.CalendarScrollBehavior</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

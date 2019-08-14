@@ -47,6 +47,23 @@
 
         <!-- Background color when SELECTED -->
         <item name="colorControlHighlight">@color/colorPink</item>
+    </style>
 
+    <style name="CustomDateAppearance" parent="TextAppearance.MaterialCalendarWidget.Date">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AvenirBook</item>
+    </style>
+
+    <style name="CustomWeekDayAppearance" parent="TextAppearance.MaterialCalendarWidget.WeekDay">
+        <item name="android:textColor">@color/colorWhiteOpacity50</item>
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AvenirBook</item>
+    </style>
+
+    <style name="CustomHeaderAppearance" parent="TextAppearance.MaterialCalendarWidget.Header">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">@dimen/_15sdp</item>
+        <item name="android:textAppearance">@style/TextAppearance.AvenirBook</item>
     </style>
 </resources>

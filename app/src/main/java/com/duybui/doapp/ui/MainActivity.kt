@@ -10,6 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
+import com.duybui.doapp.ui.calendar.CalendarFragment
 import com.duybui.doapp.ui.home.HomeFragment
 import com.duybui.doapp.utils.AppConstants
 import com.google.android.material.navigation.NavigationView
@@ -36,8 +37,10 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         navView.setNavigationItemSelectedListener(this)
         //init home fragment
+        setupCustomToolbar()
         initFragment(HomeFragment(), AppConstants.FRAGMENT_TAG.HOME_FRAGMENT)
-        setupToolbar(AppConstants.FRAGMENT_TAG.HOME_FRAGMENT)
+        updateToolbar(AppConstants.FRAGMENT_TAG.HOME_FRAGMENT)
+        navView.setCheckedItem(R.id.nav_home)
     }
 
     override fun onBackPressed() {
@@ -78,11 +81,16 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
                 tag = AppConstants.FRAGMENT_TAG.HOME_FRAGMENT
             }
 
+            R.id.nav_calendar -> {
+                fragment = CalendarFragment()
+                tag = AppConstants.FRAGMENT_TAG.CALENDAR_FRAGMENT
+            }
+
         }
         //set new fragment
         fragment?.let {
             initFragment(it, tag)
-            setupToolbar(tag)
+            updateToolbar(tag)
         }
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)

@@ -11,6 +11,11 @@ import com.duybui.doapp.di.presentation.PresentationModule
 abstract class BaseFragment : Fragment() {
 
     private var mIsInjectorUsed: Boolean = false
+    protected var mBaseActivity: BaseActivity? = null
+        get() {
+            mBaseActivity = activity as BaseActivity
+            return field
+        }
 
     protected val presentationComponent: PresentationComponent
         @UiThread
@@ -28,4 +33,6 @@ abstract class BaseFragment : Fragment() {
         get() = if (activity != null) {
             (activity!!.application as MyApplication).applicationComponent!!
         } else null
+
+
 }

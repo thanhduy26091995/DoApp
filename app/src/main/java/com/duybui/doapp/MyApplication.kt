@@ -20,9 +20,7 @@ class MyApplication : Application() {
             .applicationModule(ApplicationModule(this))
             .apiModule(ApiModule())
             .build()
-        applicationComponent?.let {
-            it.inject(this)
-        }
+        applicationComponent?.inject(this)
         //init custom font
         CalligraphyConfig.initDefault(
             CalligraphyConfig.Builder()

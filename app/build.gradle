@@ -104,6 +104,12 @@ dependencies {
 
     //
     implementation 'com.lorentzos.swipecards:library:1.0.9'
+
+    //custom calendar
+    implementation 'com.github.prolificinteractive:material-calendarview:2.0.0'
+
+    //format time
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.2.1'
 }
 androidExtensions {
     experimental = true
