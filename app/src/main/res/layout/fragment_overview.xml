@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorWhiteOpacity05"
+            android:paddingLeft="@dimen/_15sdp"
+            android:paddingTop="@dimen/_30sdp"
+            android:paddingRight="@dimen/_15sdp"
+            android:paddingBottom="@dimen/_20sdp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/ivRight"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:background="?attr/actionBarItemBackground"
+                android:src="@drawable/ic_arrow_right_white50_36dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvMonth"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvMonth" />
+
+            <ImageButton
+                android:id="@+id/ivLeft"
+                android:layout_width="@dimen/_24sdp"
+                android:layout_height="@dimen/_24sdp"
+                android:layout_centerInParent="true"
+                android:layout_toLeftOf="@id/ivRight"
+                android:background="?attr/actionBarItemBackground"
+                android:src="@drawable/ic_arrow_left_white50_36dp"
+                app:layout_constraintBottom_toBottomOf="@id/tvMonth"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tvMonth" />
+
+            <TextView
+                android:id="@+id/tvMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:layout_marginRight="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_30sdp"
+                android:gravity="center"
+                android:text="January"
+                android:textAppearance="@style/TextAppearance.AvenirLight"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_30sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="2019"
+                android:textAppearance="@style/TextAppearance.AvenirBook"
+                android:textColor="@color/colorWhiteOpacity50"
+                android:textSize="@dimen/_10sdp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvMonth" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarCompleted"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_125sdp"
+            android:layout_height="@dimen/_125sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:indeterminate="false"
+            android:progress="100"
+            android:progressDrawable="@drawable/circular_completed"
+            android:secondaryProgress="80"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/header" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarCompleted"
+            app:layout_constraintLeft_toLeftOf="@id/progressBarCompleted"
+            app:layout_constraintRight_toRightOf="@id/progressBarCompleted"
+            app:layout_constraintTop_toTopOf="@id/progressBarCompleted">
+
+            <TextView
+                android:id="@+id/tvCompletedEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="100"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirLight"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_30sdp" />
+
+            <TextView
+                android:id="@+id/tvCompletedPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="50%"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirBook"
+                android:textColor="@color/colorWhiteOpacity50"
+                android:textSize="@dimen/_10sdp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvCompleted"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Completed"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AvenirBook"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/progressBarCompleted" />
+
+        <ProgressBar
+            android:id="@+id/progressBarSnoozed"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:indeterminate="false"
+            android:progress="100"
+            android:progressDrawable="@drawable/circular_snoozed"
+            android:secondaryProgress="80"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/progressBarOverdue"
+            app:layout_constraintTop_toBottomOf="@id/tvCompleted" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarSnoozed"
+            app:layout_constraintLeft_toLeftOf="@id/progressBarSnoozed"
+            app:layout_constraintRight_toRightOf="@id/progressBarSnoozed"
+            app:layout_constraintTop_toTopOf="@id/progressBarSnoozed">
+
+            <TextView
+                android:id="@+id/tvSnoozedEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="10"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirLight"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_30sdp" />
+
+            <TextView
+                android:id="@+id/tvSnoozedPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="50%"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirBook"
+                android:textColor="@color/colorWhiteOpacity50"
+                android:textSize="@dimen/_10sdp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSnoozed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Snoozed"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AvenirBook"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="@id/progressBarSnoozed"
+            app:layout_constraintRight_toRightOf="@id/progressBarSnoozed"
+            app:layout_constraintTop_toBottomOf="@id/progressBarSnoozed" />
+
+        <ProgressBar
+            android:id="@+id/progressBarOverdue"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:indeterminate="false"
+            android:progress="100"
+            android:progressDrawable="@drawable/circular_overdue"
+            android:secondaryProgress="80"
+            app:layout_constraintLeft_toRightOf="@id/progressBarSnoozed"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/progressBarSnoozed" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="@id/progressBarOverdue"
+            app:layout_constraintLeft_toLeftOf="@id/progressBarOverdue"
+            app:layout_constraintRight_toRightOf="@id/progressBarOverdue"
+            app:layout_constraintTop_toTopOf="@id/progressBarOverdue">
+
+            <TextView
+                android:id="@+id/tvOverdueEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="10"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirLight"
+                android:textColor="@color/colorWhite"
+                android:textSize="@dimen/_30sdp" />
+
+            <TextView
+                android:id="@+id/tvOverduePercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:text="50%"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AvenirBook"
+                android:textColor="@color/colorWhiteOpacity50"
+                android:textSize="@dimen/_10sdp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvOverdue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:gravity="center"
+            android:text="Overdue"
+            android:textAllCaps="true"
+            android:textAppearance="@style/TextAppearance.AvenirBook"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_10sdp"
+            app:layout_constraintLeft_toLeftOf="@id/progressBarOverdue"
+            app:layout_constraintRight_toRightOf="@id/progressBarOverdue"
+            app:layout_constraintTop_toBottomOf="@id/progressBarOverdue" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>

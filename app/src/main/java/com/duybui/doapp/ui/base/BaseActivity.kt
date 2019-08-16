@@ -121,6 +121,11 @@ abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
                 toolbarCalendar.visibility = View.VISIBLE
                 toolbarRemain.visibility = View.GONE
             }
+            else -> {
+                toolbarHome.visibility = View.GONE
+                toolbarCalendar.visibility = View.GONE
+                toolbarRemain.visibility = View.VISIBLE
+            }
         }
     }
 

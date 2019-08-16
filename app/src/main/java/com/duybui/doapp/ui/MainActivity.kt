@@ -12,6 +12,7 @@ import com.duybui.doapp.R
 import com.duybui.doapp.ui.base.BaseActivity
 import com.duybui.doapp.ui.calendar.CalendarFragment
 import com.duybui.doapp.ui.home.HomeFragment
+import com.duybui.doapp.ui.overview.OverviewFragment
 import com.duybui.doapp.utils.AppConstants
 import com.google.android.material.navigation.NavigationView
 
@@ -84,6 +85,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_calendar -> {
                 fragment = CalendarFragment()
                 tag = AppConstants.FRAGMENT_TAG.CALENDAR_FRAGMENT
+            }
+
+            R.id.nav_overview -> {
+                fragment = OverviewFragment()
+                tag = AppConstants.FRAGMENT_TAG.OVERVIEW_FRAGMENT
             }
 
         }

@@ -10,5 +10,9 @@
     <color name="colorBlackOpacity50">#80000000</color>
     <color name="colorWhite">#FFF</color>
     <color name="colorWhiteOpacity50">#80FFFFFF</color>
+    <color name="colorWhiteOpacity05">#0DFFFFFF</color>
     <color name="colorWhiteOpacity10">#1AFFFFFF</color>
+    <color name="colorCompleted">#50D2C2</color>
+    <color name="colorSnoozed">#FCAB53</color>
+    <color name="colorOverdue">#8C88FF</color>
 </resources>

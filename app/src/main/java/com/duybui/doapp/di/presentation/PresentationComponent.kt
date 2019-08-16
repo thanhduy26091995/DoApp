@@ -1,6 +1,7 @@
 package com.duybui.doapp.di.presentation
 
 import com.duybui.doapp.ui.MainActivity
+import com.duybui.doapp.ui.calendar.CalendarFragment
 import com.duybui.doapp.ui.home.HomeFragment
 import com.duybui.doapp.ui.home.HomeViewModel
 import com.duybui.doapp.ui.users.UserViewModel
@@ -15,5 +16,7 @@ interface PresentationComponent {
     fun inject(homeViewModel: HomeViewModel)
 
     fun inject(homeFragment: HomeFragment)
+
+    fun inject(calendarFragment: CalendarFragment)
 
 }
