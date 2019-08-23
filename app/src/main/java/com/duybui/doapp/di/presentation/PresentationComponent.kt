@@ -4,6 +4,7 @@ import com.duybui.doapp.ui.MainActivity
 import com.duybui.doapp.ui.calendar.CalendarFragment
 import com.duybui.doapp.ui.home.HomeFragment
 import com.duybui.doapp.ui.home.HomeViewModel
+import com.duybui.doapp.ui.lists.ListsFragment
 import com.duybui.doapp.ui.users.UserViewModel
 import dagger.Subcomponent
 
@@ -18,5 +19,7 @@ interface PresentationComponent {
     fun inject(homeFragment: HomeFragment)
 
     fun inject(calendarFragment: CalendarFragment)
+
+    fun inject(listFragment: ListsFragment)
 
 }
